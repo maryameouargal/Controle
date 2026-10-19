@@ -6,35 +6,41 @@ public abstract class Employe {
 	protected double tarifJournalier;
 	protected Employe superieur;
 
-//	THE CONSTRUCTEUR USING SOURCE ONLY 
 	public Employe(String matricule, String nom, double tarifJournalier) {
 		this.matricule = matricule;
 		this.nom = nom;
 		this.tarifJournalier = tarifJournalier;
+		this.superieur = null;
 	}
-//THE GETTER 
 
 	public String getMatricule() {
 		return matricule;
 	}
 
-// methode
 	public abstract double calculerCout(int nbJours);
 
-//	THE GETTERS AND SETTERS 
+	public void afficherDetails() {
+		System.out.println("  Matricule : " + matricule);
+		System.out.println("  Nom       : " + nom);
+		System.out.println("  Tarifdejour: " + tarifJournalier + " DH");
+		if (superieur != null) {
+			System.out.println("  Supérieur : " + superieur.nom);
+		} else {
+			System.out.println("  Supérieur : aucun");
+		}
+		;
+	}
 
 	public Employe getSuperieur() {
 		return superieur;
 	}
 
 	public void setSuperieur(Employe superieur) {
+		if (superieur == this) {
+			System.out.println(" Un employé ne peut pas être son propre supérieur.");
+			return;
+		}
 		this.superieur = superieur;
-	}
-
-// instead using ToString 
-	@Override
-	public String toString() {
-		return "Employe [matricule=" + matricule + ", nom=" + nom + ", tarifJournalier=" + tarifJournalier + "]";
 	}
 
 }

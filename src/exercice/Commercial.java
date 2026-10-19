@@ -14,5 +14,8 @@ public class Commercial extends Employe {
 		double 	coût  = montantBase+montantBase *tauxPrime;
 		return coût ;
 	}
-
+    public void afficherDetails() {
+        super.afficherDetails();
+        System.out.println("  Taux prime: " + tauxPrime);
+    }
 }
